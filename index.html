@@ -1,1 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SANTOS FC | O Maior Brasileiro do Mundo</title>
+  <style>
+    /* RESET E VARIÁVEIS DE CORES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
+    :root {
+      --bg-header: #FFFFFF;
+      --bg-main: #F8F9FA;
+      --bg-footer: #0B0B0B;
+      --text-dark: #000000;
+      --text-body: #333333;
+      --text-light: #FFFFFF;
+      --text-muted: #888888;
+      --accent-gold: #FFC700;
+      --accent-green: #25D366;
+      --border-color: #E0E0E0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 1. CABEÇALHO (HEADER) */
+    header {
+      background-color: var(--bg-header);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .brand img {
+      width: 50px;
+      height: auto;
+    }
+
+    .brand-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      text-transform: uppercase;
+    }
+
+    .brand-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-body);
+      margin-top: 0.2rem;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent-gold);
+    }
+
+    /* 2. CONTEÚDO PRINCIPAL (MAIN) */
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero-title {
+      text-align: center;
+      background-color: var(--text-dark);
+      color: var(--text-light);
+      padding: 1rem;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 2rem;
+      border-radius: 4px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 900px) {
+      .content-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* Coluna Esquerda */
+    .left-column img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .text-block {
+      margin-bottom: 1.5rem;
+    }
+
+    .text-block h2 {
+      color: var(--text-dark);
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      border-left: 4px solid var(--accent-gold);
+      padding-left: 0.5rem;
+    }
+
+    /* Coluna Direita */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .video-section h2 {
+      color: var(--text-dark);
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* Proporção 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      background-color: var(--text-dark);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* 3. RODAPÉ (FOOTER) */
+    footer {
+      background-color: var(--bg-footer);
+      color: var(--text-light);
+      padding: 3rem 1.5rem 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .footer-quote {
+      font-style: italic;
+      font-size: 1.1rem;
+      max-width: 600px;
+      border-bottom: 1px solid #222;
+      padding-bottom: 1.5rem;
+      width: 100%;
+    }
+
+    .footer-contact a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--accent-green);
+      color: var(--text-light);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-weight: bold;
+      transition: opacity 0.2s;
+    }
+
+    .footer-contact a:hover {
+      opacity: 0.9;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-socials a:hover {
+      color: var(--accent-gold);
+    }
+
+    .footer-copyright {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. CABEÇALHO -->
+  <header>
+    <div class="header-container">
+      <div class="brand">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Santos_Logo.png" alt="Escudo do Santos FC">
+        <div>
+          <h1 class="brand-title">SANTOS FC | O Maior Brasileiro do Mundo</h1>
+          <p class="brand-subtitle">O portal definitivo sobre a história, o presente e o futuro do time do Rei Pelé e dos Meninos da Vila.</p>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Início</a></li>
+          <li><a href="#">História</a></li>
+          <li><a href="#">Elenco</a></li>
+          <li><a href="#">Notícias</a></li>
+          <li><a href="#">Sócio Rei</a></li>
+          <li><a href="#">Ingressos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 2. CONTEÚDO PRINCIPAL -->
+  <main>
+    <h1 class="hero-title">O Templo do Futebol da Vila Belmiro Para o Mundo</h1>
+
+    <div class="content-grid">
+      <!-- Coluna Esquerda: Foto Principal e Textos -->
+      <section class="left-column">
+        <img src="http://googleusercontent.com/image_collection/image_retrieval/10361971386439710994_0" alt="Torcida do Santos na Vila Belmiro">
+        
+        <article class="text-block">
+          <h2>História e Tradição</h2>
+          <p>O Santos Futebol Clube não é apenas um time; é uma das instituições mais respeitadas da história do esporte mundial. Conhecido internacionalmente por parar guerras nos anos 60, o Alvinegro Praiano foi o palco onde Pelé encantou o planeta.</p>
+        </article>
+
+        <article class="text-block">
+          <h2>DNA Ofensivo</h2>
+          <p>A essência do Santos está em seu jogo bonito e na busca incessante pelo gol, uma marca registrada mantida através das décadas.</p>
+        </article>
+
+        <article class="text-block">
+          <h2>Base da Vila</h2>
+          <p>A lendária fábrica de craques revelou nomes gigantescos para o futebol mundial, mantendo a tradição dos Meninos da Vila de geração em geração.</p>
+        </article>
+      </section>
+
+      <!-- Coluna Direita: Galeria e Vídeo -->
+      <section class="right-column">
+        <div class="gallery-grid">
+          <img src="http://googleusercontent.com/image_collection/image_retrieval/16709832208159320883_0" alt="Pelé comemorando gol pelo Santos FC">
+          <img src="http://googleusercontent.com/image_collection/image_retrieval/18033714190874217469_0" alt="Vista aérea da Vila Belmiro">
+          <img src="http://googleusercontent.com/image_collection/image_retrieval/6493316426064815446_0" alt="Neymar e Ganso no Santos FC">
+        </div>
+
+        <div class="video-section">
+          <h2>🎬 Vídeo</h2>
+          <div class="video-container">
+            <!-- Substitua o src pelo ID do vídeo do YouTube que desejar -->
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo Santos FC" allowfullscreen></iframe>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- 3. RODAPÉ -->
+  <footer>
+    <div class="footer-container">
+      <blockquote class="footer-quote">
+        "Nascer, viver e no Santos morrer é um orgulho que nem todos podem ter."
+      </blockquote>
+
+      <div class="footer-contact">
+        <a href="https://wa.me/5513999999999" target="_blank">
+          📱 Fale Conosco no WhatsApp (13) 99999-9999
+        </a>
+      </div>
+
+      <div class="footer-socials">
+        <a href="#">Instagram (@seusite.sfc)</a>
+        <a href="#">YouTube (/NacaoSantistaTV)</a>
+        <a href="#">X / Twitter (@seusite_sfc)</a>
+      </div>
+
+      <p class="footer-copyright">
+        🔒 Direitos Autorais: © 2026 Nação Santista — Página criada por fãs do Santos Futebol Clube. Todos os direitos reservados.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
